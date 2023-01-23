@@ -1,0 +1,7 @@
+{
+  "name": "test-dev-ari",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
