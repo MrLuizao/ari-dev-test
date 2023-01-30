@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ModelDataResponse } from 'src/app/Interfaces/data.interface';
+import { MockServiceService } from 'src/app/services/mock-service.service';
 
 @Component({
   selector: 'app-home-lvr',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeLvrPage implements OnInit {
 
-  constructor() { }
+  dataObservable$: Observable<ModelDataResponse[]> | undefined
+  dataObservable: any;
 
-  ngOnInit() {
+  constructor( public mockService: MockServiceService ) { 
+
+    setTimeout( ()=>{
+      this.dataObservable$ = mockService.getExampleLvr();
+      console.log('dataObservable$', this.dataObservable$);
+    }, 3000)
+    
   }
+
+  ngOnInit(){}
+  // ngOnInit() {
+  //   this.mockService.getExampleLvr().subscribe( (resp)=>{
+  //     this.dataObservable = resp;
+  //     console.log('dataObservable', this.dataObservable);
+  //   });
+  // }
 
 }

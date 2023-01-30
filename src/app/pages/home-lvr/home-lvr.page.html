@@ -5,5 +5,11 @@
 </ion-header>
 
 <ion-content>
-  <app-mock-lvr></app-mock-lvr>
+  <!-- <app-mock-lvr></app-mock-lvr> -->
+  <ion-progress-bar type="indeterminate" *ngIf="!dataObservable$"></ion-progress-bar>
+
+  <div *ngIf="dataObservable$ | async as dataArray">
+    <p *ngFor="let item of dataArray"> {{item.employee_name}} </p>
+  </div>
+
 </ion-content>
